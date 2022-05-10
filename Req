@@ -1,0 +1,43 @@
+•	Discussed Terraform training updates.
+•	Azure Subscription and Azure DevOps access.
+o	https://dev.azure.com/HPE-MVC/TCD_Public_Cloud
+•	New Use-case for Azure, Azure DevOps and Terraform.
+
+As discussed, please find the use-case details.
+1.	Create one Repo in Azure DevOps (AzDO) and follow the file structure for creating the below resources.
+
+resource_directory
+            └───main.tf
+            └───variables.tf
+            └───output.tf
+            └───providers.tf
+            └───locals.tf
+            └───var.tfvars
+
+2.	Create Azure resources using Terraform. Use Parameterized template and all values from .tfvars file.
+a.	1 Resource Group
+b.	1 Virtual Network (dependent on resource group)
+c.	2 Subnets (Use loop or dynamic to create multiple resource)
+Note: Vnet will be dependent on resource group and Subnet dependent on Vnet and RG.
+
+3.	As pre-requisite to store the terraform state file you need to use Azure Storage account and that can be created manually.
+4.	Also Service Connection need to be created to authorize the pipeline and deploy resources to Azure.
+5.	Create AzDO pipelines to deploy the resources in Step 2.
+6.	Pipeline will have multiple stages that will cover terraform install, init, validate, plan and apply. 
+Note: Use Microsoft-hosted Linux agents for this deployment.
+
+Let me know, or ping in Group chat if you have any doubt or blockers.
+
+
+Attendees:
+•	Chauhan, Navjeevan
+•	G, Nirmal
+•	Bhure, Nagaraj
+•	Nath, Pran Sankar
+•	Barnwal, Manish Kumar
+
+Not present:
+•	Kanchan
+•	Albert, Jessy
+•	Chanda, Subhadip
+•	Nagpal, Sunil
